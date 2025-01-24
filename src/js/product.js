@@ -3,14 +3,14 @@ import { findProductById } from './productData.mjs';
 import { productDetails } from './productDetails.mjs';
 
 // Moved it to productDetails.mjs
-// function addProductToCart(product) {
-//   let cartItems = getLocalStorage('so-cart');
-//   if (!cartItems || !Array.isArray(cartItems)) {
-//     cartItems = [];
-//   }
-//   cartItems.push(product);
-//   setLocalStorage('so-cart', cartItems);
-// }
+function addProductToCart(product) {
+  let cartItems = getLocalStorage('so-cart');
+  if (!cartItems || !Array.isArray(cartItems)) {
+    cartItems = [];
+  }
+  cartItems.push(product);
+  setLocalStorage('so-cart', cartItems);
+}
 
 
 // add to cart button event handler

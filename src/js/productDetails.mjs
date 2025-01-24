@@ -3,13 +3,26 @@ import { setLocalStorage } from "./utils.mjs";
 
 let product = {};
 
-export function productDetails(productId, selector) {
-    product = findProductById(productId);
-    console.log(product);
-    const el = document.querySelector(selector);
-    el.insertAdjacentHTML("afterBegin", productDetailsTemplate(product));
-    document.getElementById("addToCart").addEventListener("click", addToCart);
+export async function productDetails(productId, selector) {
+  product = await findProductById(productId);
+  const el = document.querySelector(selector);
+  el.insertAdjacentHTML("afterBegin", productDetailsTemplate(product));
+  // document.getElementById("addToCart").addEventListener("click", addToCart(product));
 }
+// function addToCart() {
+//   setLocalStorage("so-cart", product);
+// }
+
+// function addToCart(product) {
+//   let cartItems = getLocalStorage('so-cart');
+//   if (!cartItems || !Array.isArray(cartItems)) {
+//     cartItems = [];
+//   }
+//   cartItems.push(product);
+//   setLocalStorage('so-cart', cartItems);
+// }
+
+
 
 function addProductToCart(product) {
   let cartItems = getLocalStorage('so-cart');
