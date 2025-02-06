@@ -1,3 +1,7 @@
+import { mount } from 'svelte';
+import MainHeader from './components/MainHeader.svelte';
+import MainFooter from './components/MainFooter.svelte';
+
 // wrapper for querySelector...returns matching element
 export function qs(selector, parent = document) {
   return parent.querySelector(selector);
@@ -27,4 +31,13 @@ export function getParam(param) {
   const urlParams = new URLSearchParams(queryString);
   // const product = urlParams.get('product')
   return urlParams.get(param);
+}
+
+export function renderHeaderFooter() {
+  const header = mount(MainHeader, {
+    target: document.querySelector('#indexHeader')
+  });
+  const footer = mount(MainFooter,{
+    target: document.querySelector("#indexFooter")
+  })
 }
