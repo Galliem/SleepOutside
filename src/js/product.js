@@ -22,7 +22,7 @@ async function addToCartHandler(e) {
 // add listener to Add to Cart button
 document
   .getElementById('addToCart')
-  .addEventListener('click', addToCartHandler);
+  // .addEventListener('click', addToCartHandler);
 
 const productId = getParam('product');
 productDetails(productId, '.product-detail');
