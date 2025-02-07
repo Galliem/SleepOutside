@@ -1,8 +1,8 @@
     <!-- ProductList.svelte -->
     <script>
-      let {cartCount = 0} = $props();
+      import { cartState } from "./state.svelte"
+      //let {cartCount = 0} = $props();
     </script>
-    
     
     <div class='logo'>
       <img src='/images/noun_Tent_2517.svg' alt='tent for logo' />
@@ -33,12 +33,9 @@
           <!-- <text x='0' y='115' fill='#000000' font-size='5px' font-weight='bold' font-family=''Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif'>Created by Natalia Woodroffe</text>
           <text x='0' y='120' fill='#000000' font-size='5px' font-weight='bold' font-family=''Helvetica Neue', Helvetica, Arial-Unicode, Arial, Sans-serif'>from the Noun Project</text> -->
         </svg>
-        <sup class="cart-count">{cartCount}</sup>
+        <sup class="cart-count">{cartState.count > 0 ? cartState.count : ""}</sup>
       </a>
     </div>
 
-    <!-- utils.mjs  renderHeaderFooter -->
-    <!-- const header = mount(MainHeader, {
-        target: document.querySelector("#main-header"),
-        props: { cartCount: 3 },
-    }); -->
+
+  

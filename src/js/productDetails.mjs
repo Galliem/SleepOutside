@@ -1,4 +1,5 @@
 import { findProductById } from "./productData.mjs";
+import { cartState } from "./components/state.svelte";
 import { setLocalStorage } from "./utils.mjs";
 
 let product = {};
@@ -24,13 +25,15 @@ export async function productDetails(productId, selector) {
 
 
 
-function addProductToCart(product) {
+function addToCart(product) {
   let cartItems = getLocalStorage('so-cart');
   if (!cartItems || !Array.isArray(cartItems)) {
     cartItems = [];
   }
   cartItems.push(product);
   setLocalStorage('so-cart', cartItems);
+  //update the visable cartCount
+  cartState.count = cartItems.length;
 }
 
 function productDetailsTemplate(product) {

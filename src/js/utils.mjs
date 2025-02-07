@@ -33,11 +33,16 @@ export function getParam(param) {
   return urlParams.get(param);
 }
 
+export function getCartCount() {
+  const count = getLocalStorage("so-cart")?.length ?? 0;
+  return count;
+}
+
 export function renderHeaderFooter() {
   const header = mount(MainHeader, {
     target: document.querySelector('#indexHeader')
   });
   const footer = mount(MainFooter,{
     target: document.querySelector("#indexFooter")
-  })
+  });
 }

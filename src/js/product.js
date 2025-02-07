@@ -3,7 +3,7 @@ import { findProductById } from './productData.mjs';
 import { productDetails } from './productDetails.mjs';
 
 // Moved it to productDetails.mjs
-function addProductToCart(product) {
+function addToCart(product) {
   let cartItems = getLocalStorage('so-cart');
   if (!cartItems || !Array.isArray(cartItems)) {
     cartItems = [];
@@ -16,7 +16,7 @@ function addProductToCart(product) {
 // add to cart button event handler
 async function addToCartHandler(e) {
   const product = await findProductById(e.target.dataset.id);
-  addProductToCart(product);
+  addToCart(product);
 }
 
 // add listener to Add to Cart button
