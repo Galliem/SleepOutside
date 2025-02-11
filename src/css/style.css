@@ -103,6 +103,14 @@ button {
   text-align: center;
 }
 
+.added_to_cart {
+  animation: jumpcart 1s;
+}
+
+@keyframes jumpcart {
+  50% {transform: translate(0, -10px);}
+}
+
 .cart svg {
   width: 25px;
 }
