@@ -25,7 +25,7 @@ export async function productDetails(productId, selector) {
 
 
 
-function addToCart(product) {
+export function addToCart(product) {
   let cartItems = getLocalStorage('so-cart');
   if (!cartItems || !Array.isArray(cartItems)) {
     cartItems = [];
