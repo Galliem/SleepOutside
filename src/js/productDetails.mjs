@@ -10,31 +10,19 @@ export async function productDetails(productId, selector) {
   el.insertAdjacentHTML("afterBegin", productDetailsTemplate(product));
   document.getElementById("addToCart").addEventListener("click", addToCart(product));
 }
+
 // function addToCart() {
-//   setLocalStorage("so-cart", product);
-// }
-
-// function addToCart(product) {
-//   let cartItems = getLocalStorage('so-cart');
-//   if (!cartItems || !Array.isArray(cartItems)) {
-//     cartItems = [];
+//   let cartContents = getLocalStorage("so-cart");
+//   //check to see if there was anything there
+//   if (!cartContents) {
+//     cartContents = [];
 //   }
-//   cartItems.push(product);
-//   setLocalStorage('so-cart', cartItems);
-// }
-
-function addToCart() {
-  let cartContents = getLocalStorage("so-cart");
-  //check to see if there was anything there
-  if (!cartContents) {
-    cartContents = [];
-  }
-  // then add the current product to the list
-  cartContents.push(product);
-  setLocalStorage("so-cart", cartContents);
-  // update the visible cartCount
-  // cartState.count = cartContents.length;
-}
+//   // then add the current product to the list
+//   cartContents.push(product);
+//   setLocalStorage("so-cart", cartContents);
+//   // update the visible cartCount
+//   // cartState.count = cartContents.length;
+//}
 
 export function addToCart(product) {
   let cartItems = getLocalStorage('so-cart');
