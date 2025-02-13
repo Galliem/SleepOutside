@@ -103,7 +103,7 @@ button {
   text-align: center;
 }
 
-.added_to_cart {
+.cart-animation {
   animation: jumpcart 1s;
 }
 

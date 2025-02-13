@@ -61,3 +61,10 @@ function productDetailsTemplate(product) {
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div>`;
 }
+
+function cartAnimation() {
+  const cartEl = document.querySelector(".cart");
+  cartEl.classList.add('cart-animation');
+}
+
+document.querySelector("#addToCart").addEventListener('click', cartAnimation);
