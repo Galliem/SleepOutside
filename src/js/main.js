@@ -20,7 +20,7 @@ function categoriestemplate() {
       <img src="../images/noun_carrier bag_3544771.svg" alt="Tent Icon from Noun Project: Mustofa Bayu">
       <p>Backpacks</p>
     </a>
-    <a href="product-list/product-index.html?category=sleepingBags">
+    <a href="product-list/product-index.html?category=sleeping-bags">
       <img src="../images/noun_Sleeping Bag_3544775.svg" alt="Tent Icon from Noun Project: Mustofa Bayu">
       <p>Sleeping Bags</p>
     </a>

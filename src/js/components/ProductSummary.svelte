@@ -3,7 +3,7 @@
 </script>
 
 <section>
-    <a href="product_pages/index.html?product={product.Id}">
+    <a href="/product_pages/index.html?product={product.Id}">
         <img
         src="{product.Image}"
         alt="{product.Name}"/>

@@ -6,7 +6,7 @@ const category = getParam('category');
 
 const productList = mount(ProductList, {
     target: document.querySelector('.products'),
-    props: { category: "tents"},
+    props: { category: category},
   });
 
   renderHeaderFooter();
