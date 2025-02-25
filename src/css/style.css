@@ -220,3 +220,21 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+.categories {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.categories a {
+  padding: .5em;
+  text-decoration: none;
+  color: black;
+  p {
+    display: flex;
+    justify-content: center;
+  }
+}
+.categories img{
+  width: 6em;
+}
