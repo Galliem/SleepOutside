@@ -1,4 +1,4 @@
-import { findProductById } from "./productData.mjs";
+import { findProductById } from "./externalServices.mjs";
 import { cartState } from "./components/state.svelte";
 import { setLocalStorage, getLocalStorage } from "./utils.mjs";
 
