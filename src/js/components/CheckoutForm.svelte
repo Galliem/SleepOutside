@@ -1,6 +1,7 @@
 <script>
     import { getLocalStorage, formDataToJSON } from "../utils.mjs";
     import { onMount } from "svelte";
+    import { checkout } from '../externalServices.mjs';
     
     let { key = "" } = $props();
 
@@ -33,7 +34,6 @@
 
     const packageItems = function(items) {
       const simplifiedItems = items.map((item) => {
-      console.log(item);
       return {
         id: item.Id,
         price: item.FinalPrice,
@@ -112,7 +112,7 @@
               </li>
             </ul>
           </fieldset>        
-          <button class="checkout" type="submit">Checkout</button>
+          <button class="checkout">Checkout</button>
     </form>
 
 
