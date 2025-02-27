@@ -136,15 +136,14 @@ button {
 
 /* Styles for remove button */
 .remove-item-btn {
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
-  color: var(--secondary-color);
   margin-bottom: 15px;
   cursor: pointer;
 }
 
 .remove-item-btn:hover {
-  color: darkred;
+  background-color: darkred;
 }
 
 /* Styles for product lists */
