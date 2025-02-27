@@ -30,4 +30,21 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+function getTotal(cartItems){
+  let total = 0;
+  cartItems.forEach(item => {
+    total += item.FinalPrice *(item.quantity || 1);
+  });
+  console.log(total);
+  // const cartTotal =  "<p>$${total.toFixed(2)}</p>"
+  document.querySelector(".cart-total").insertAdjacentHTML("afterbegin", totalTemplate(total));
+  return total;
+}
+
+function totalTemplate(total) {
+  return `<p>Total: $${total.toFixed(2)}</p>`
+}
+
+const cartItems = getLocalStorage("so-cart");
 renderCartContents();
+getTotal(cartItems);
