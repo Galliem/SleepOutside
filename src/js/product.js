@@ -1,5 +1,5 @@
 import { setLocalStorage, getLocalStorage, getParam } from './utils.mjs';
-import { findProductById } from './externalServices.mjs';
+import { findProductById } from './productData.mjs';
 import { productDetails } from './productDetails.mjs'; 
 import { addToCart } from './productDetails.mjs'
 import { doc } from 'prettier';

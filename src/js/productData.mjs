@@ -8,20 +8,20 @@ function convertToJson(res) {
   }
 }
 
-// export function getproductsByCategory(category = "tents") {
+// export function getData(category = "tents") {
 //   return fetch(`../json/${category}.json`)
 //     .then(convertToJson)
 //     .then((data) => data);
 // }
 
-export async function getproductsByCategory(category) {
+export async function getData(category) {
   const response = await fetch(baseURL + `products/search/${category}`);
   const data = await convertToJson(response);
   return data.Result;
 }
 
 // export async function findProductById(id) {
-//   const products = await getproductsByCategory();
+//   const products = await getData();
 //   return products.find((item) => item.Id === id);
 // }
 
