@@ -11,13 +11,13 @@
     let total = $state(0);
 
     const init = function () {
-        list = getLocalStorage(key);
+        list = getLocalStorage(key)||[];
         calculateItemSummary();
     };
 
     const calculateItemSummary = function() {
         const amounts = list.map((item) => item.FinalPrice);
-        subtotal = amounts.reduce((sum, item) => sum + item);
+        subtotal = amounts.reduce((sum, item) => sum + item, 0);
     };
     
     const calculateOrdertotal = function () {
@@ -28,7 +28,9 @@
 
     }
 
-    
+    const handleFormSubmit = function(ev) {
+      ev.preventDefault();
+    }
 
     onMount(init);
 </script>
@@ -36,7 +38,7 @@
 <fieldset class="checkout-summary">
     <legend>Order Summary</legend>
 
-    <form>
+    <form onsubmit={handleFormSubmit}>
         <section class="shipping">
             <label>Shipping</label>
             <label for="fname">First Name</label>
@@ -65,7 +67,7 @@
             <ul>
               <li>
                 <label for="cartTotal">Item Subtotal({list.length})</label>
-                <p name="cartTotal" id="cartTotal">${itemTotal}</p>
+                <p name="cartTotal" id="cartTotal">${subtotal}</p>
               </li>
               <li>
                 <label for="shipping">Shipping Estimate</label>
@@ -77,7 +79,7 @@
               </li>
               <li>
                 <label for="orderTotal"><b>Order Total</b></label>
-                <p id="orderTotal">${orderTotal}</p>
+                <p id="orderTotal">${total}</p>
               </li>
             </ul>
           </fieldset>        

@@ -1,7 +1,13 @@
-import { loadHeaderFooter } from "./utils.mjs";
+import { renderHeaderFooter } from './utils.mjs';
+import CheckoutForm from './components/CheckoutForm.svelte'
+import { mount } from 'svelte';
 
-function getTotal(){
-    
-}
+// document.querySelector('.checkoutInfo').insertAdjacentElement('afterbegin', CheckoutForm);
 
-loadHeaderFooter();
+renderHeaderFooter();
+
+
+mount(CheckoutForm,{
+    target: document.querySelector('.checkoutInfo'),
+    props: { key: "so-cart"},
+})
