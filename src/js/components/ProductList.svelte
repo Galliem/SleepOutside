@@ -1,11 +1,11 @@
 <script>
-    import {getData} from '../productData.mjs';
+    import {getProductsByCategory} from '../externalServices.mjs';
     import ProductSummary from './ProductSummary.svelte';
     // this is how we make a prop in svelte
     let {category} = $props();
     // if you are looking at this thinking that's strange to just stop with a promise
     // you would be right.  This will make more sense in a bit...stay tuned.
-    let promise = getData(category);
+    let promise = getProductsByCategory(category);
 </script>
 
 <h2>Top Products: {category}</h2>
