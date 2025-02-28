@@ -12,19 +12,19 @@ function renderCategories() {
 }
 
 function categoriestemplate() {
-  return `<a href="product-list/product-index.html?category=tents">
+  return `<a href="/product-list/product-index.html?category=tents">
       <img src="../images/tent_icon.svg" alt="Tent Icon from Noun Project: Mustofa Bayu" >
       <p>Tents</p>
     </a>
-    <a href="product-list/product-index.html?category=backpacks">
+    <a href="/product-list/product-index.html?category=backpacks">
       <img src="../images/noun_carrier bag_3544771.svg" alt="Tent Icon from Noun Project: Mustofa Bayu">
       <p>Backpacks</p>
     </a>
-    <a href="product-list/product-index.html?category=sleeping-bags">
+    <a href="/product-list/product-index.html?category=sleeping-bags">
       <img src="../images/noun_Sleeping Bag_3544775.svg" alt="Tent Icon from Noun Project: Mustofa Bayu">
       <p>Sleeping Bags</p>
     </a>
-    <a href="product-list/product-index.html?category=hammocks">
+    <a href="/product-list/product-index.html?category=hammocks">
       <img src="../images/noun_Hammock_791143.svg" alt="Tent Icon from Noun Project: Mustofa Bayu">
       <p>Hammocks</p>
     </a>
