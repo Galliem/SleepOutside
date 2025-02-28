@@ -1,6 +1,7 @@
 <script>
-    import { getLocalStorage, formDataToJSON } from "../utils.mjs";
+    import { getLocalStorage, formDataToJSON, setLocalStorage, alertMessage, removeAllAlerts } from "../utils.mjs";
     import { onMount } from "svelte";
+    import { checkout } from '../externalServices.mjs';
     
     let { key = "" } = $props();
 
@@ -33,7 +34,6 @@
 
     const packageItems = function(items) {
       const simplifiedItems = items.map((item) => {
-      console.log(item);
       return {
         id: item.Id,
         price: item.FinalPrice,
@@ -45,6 +45,7 @@
     };
 
     const handleSubmit = async function (e) {
+      e.preventDefault();
       const json = formDataToJSON(this);
       // add totals, and item details
       json.orderDate = new Date();
@@ -56,7 +57,13 @@
       try {
         const res = await checkout(json);
         console.log(res);
+        setLocalStorage('so-cart', []);
+        location.assign("/checkout/success.html");
       } catch (err) {
+        removeAllAlerts();
+        for (let message in err.message) {
+          alertMessage(err.message[message])
+        }
         console.log(err);
       }
     };
@@ -66,10 +73,10 @@
 
 <fieldset class="checkout-summary">
     <legend>Order Summary</legend>
-
-    <form name="checkout" on:submit|preventDefault={handleSubmit}>
+    <section class="alert"></section>
+    <form name="checkout" onsubmit={handleSubmit}>
         <section class="shipping">
-            <label>Shipping</label>
+            <legend>Shipping</legend>
             <label for="fname">First Name</label>
             <input type="text" id="fname" name="fname" required>
             <label for="lname"> Last Name</label>
@@ -79,18 +86,19 @@
             <label for="city">City</label>
             <input type="text" id="city" name="city" required>
             <label for="state">State</label>
-            <input type="text" id="state" name="state" required>
+            <input type="text" id="state" name="state" placeholder="ST" required>
             <label for="zip">Zip</label>
-            <input type="text" id="zip" name="zip" required>
+            <input type="text" id="zip" name="zip" placeholder="12345" required>
         </section>
         <section class="payment">
+            <legend>Payment</legend>
             <label for="cardNumber">Card Number</label>
-            <input type="text" id="cardNumber" name="cardNumber" required>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234123412341234" required>
             <label for="expiration">Expiration</label>
-            <input type="text" id="expiration" name="expiration" required>
+            <input type="text" id="expiration" name="expiration" placeholder="11/27" required>
             <label for="code">Security Code</label>
-            <input type="text" id="code" name="code" required>
-        </section>
+            <input type="text" id="code" name="code" placeholder="123" required title="Enter a 3-digit code">        
+          </section>
         <fieldset class="checkout-summary">
             <legend>Order Summary</legend>
             <ul>
@@ -112,7 +120,7 @@
               </li>
             </ul>
           </fieldset>        
-          <button class="checkout" type="submit">Checkout</button>
+          <button class="checkout">Checkout</button>
     </form>
 
 
