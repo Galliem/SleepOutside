@@ -88,12 +88,12 @@
             <label for="state">State</label>
             <input type="text" id="state" name="state" placeholder="ST" required>
             <label for="zip">Zip</label>
-            <input type="number" id="zip" name="zip" placeholder="12345" required>
+            <input type="text" id="zip" name="zip" placeholder="12345" required>
         </section>
         <section class="payment">
             <legend>Payment</legend>
             <label for="cardNumber">Card Number</label>
-            <input type="number" id="cardNumber" name="cardNumber" placeholder="1234123412341234" pattern="[0-9]{16}" required>
+            <input type="text" id="cardNumber" name="cardNumber" placeholder="1234123412341234" required>
             <label for="expiration">Expiration</label>
             <input type="text" id="expiration" name="expiration" placeholder="11/27" required>
             <label for="code">Security Code</label>
