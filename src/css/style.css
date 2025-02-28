@@ -133,6 +133,17 @@ button {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
+/* Styles for remove button */
+.remove-item-btn {
+  font-size: 12px;
+  margin-bottom: 15px;
+}
+
+.remove-item-btn:hover {
+  background-color: darkred;
+}
+
 /* Styles for product lists */
 .product-card {
   flex: 1 1 45%;
