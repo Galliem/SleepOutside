@@ -21,16 +21,18 @@ export async function getProductsByCategory(category) {
   return data.Result;
 }
 
-// export async function findProductById(id) {
-//   const products = await getData();
-//   return products.find((item) => item.Id === id);
-// }
-
-export async function findProductById(id) {
-  const response = await fetch(baseURL + `product/${id}`);
-  const product = await convertToJson(response);
-  return product.Result;
+//Trello card  product not found
+export async function findProductById(id){
+    if (id!==id) {
+      throw "Product not found";
+    }
+    else{
+      const response = await fetch(baseURL + `product/${id}`);
+      const product = await convertToJson(response);
+      return product.Result;
+    }
 }
+
 
 export async function checkout(payload) {
   const options = {
