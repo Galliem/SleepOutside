@@ -8,7 +8,6 @@ function renderCartContents() {
   } else {
     document.querySelector(".product-list").innerHTML = "<p>Your cart is empty</p>";
   }
-  
 }
 
 function cartItemTemplate(item) {
