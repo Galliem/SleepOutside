@@ -10,22 +10,24 @@ function renderCartContents() {
   }
 }
 
-function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
-  <a href="#" class="cart-card__image">
-    <img
-      src="${item.Image}"
-      alt="${item.Name}"
-    />
-  </a>
-  <a href="#">
-    <h2 class="card__name">${item.Name}</h2>
-  </a>
-  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
-</li>`;
-
+function cartItemTemplate(item, index) {
+  const newItem = `
+    <li class="cart-card divider" data-index="${index}">
+      <a href="#" class="cart-card__image">
+        <img src="${item.Image}" alt="${item.Name}" />
+      </a>
+      <a href="#">
+        <h2 class="card__name">${item.Name}</h2>
+      </a>
+      <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+      <p class="cart-card__quantity">qty: 1</p>
+      <p class="cart-card__quantity">
+        qty: <input type="number" class="quantity-input" value="${item.quantity || 1}" data-index="${index}" min="1" />
+      </p>
+      <p class="cart-card__price">$${item.FinalPrice}</p>
+      <button class="remove-item-btn">Remove</button>
+    </li>
+  `;
   return newItem;
 }
 
@@ -51,12 +53,18 @@ function updateCartItemQuantity(index, quantity) {
   }
 }
 
-function removeCartItem(index) {
-  const cartItems = getLocalStorage("so-cart");
-  cartItems.splice(index, 1);
-  setLocalStorage("so-cart", cartItems);
-  renderCartContents();
-}
+document.addEventListener('input', function(event) {
+  if (event.target && event.target.classList.contains('quantity-input')) {
+    const index = event.target.getAttribute('data-index');
+    const quantity = parseInt(event.target.value);
+
+    if (quantity > 0) {
+      updateCartItemQuantity(index, quantity);
+    }
+  }
+});
+
+
 
 document.querySelector(".product-list").addEventListener("click", function (e) {
   if (e.target && e.target.classList.contains("remove-item-btn")) {
