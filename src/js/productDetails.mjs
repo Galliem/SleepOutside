@@ -9,6 +9,31 @@ export async function productDetails(productId, selector) {
   const el = document.querySelector(selector);
   el.insertAdjacentHTML("afterBegin", productDetailsTemplate(product));
   document.getElementById("addToCart").addEventListener("click", addToCart(product));
+  const addToCartButton = document.getElementById("addToCart");
+  if (addToCartButton) {
+    addToCartButton.addEventListener("click", () => {
+      addToCart(product);
+      cartAnimation();
+    });
+  }
+}
+
+document.body.addEventListener("click", (event) => {
+  if (event.target && event.target.id === "addToCart") {
+    cartAnimation();
+  }
+});
+
+function cartAnimation() {
+  const cartEl = document.querySelector(".cart");
+  if (cartEl) {
+    cartEl.classList.add("cart-animation");
+
+    // Remove the class after animation ends so it can be triggered again
+    setTimeout(() => {
+      cartEl.classList.remove("cart-animation");
+    }, 500); // Adjust timing based on animation duration
+  }
 }
 
 // function addToCart() {
@@ -53,9 +78,9 @@ function productDetailsTemplate(product) {
     </div>`;
 }
 
-function cartAnimation() {
-  const cartEl = document.querySelector(".cart");
-  cartEl.classList.add('cart-animation');
-}
+// function cartAnimation() {
+//   const cartEl = document.querySelector(".cart");
+//   cartEl.classList.add('cart-animation');
+// }
 
-document.querySelector("#addToCart").addEventListener('click', cartAnimation);
+// document.querySelector("#addToCart").addEventListener('click', cartAnimation);
