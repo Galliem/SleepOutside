@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs"; // Assuming you have a method to set localStorage
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
@@ -10,22 +10,22 @@ function renderCartContents() {
   }
 }
 
-function cartItemTemplate(item, index) {
-  const newItem = `
-    <li class="cart-card divider">
-      <a href="#" class="cart-card__image">
-        <img src="${item.Image}" alt="${item.Name}" />
-      </a>
-      <a href="#">
-        <h2 class="card__name">${item.Name}</h2>
-      </a>
-      <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-      <p class="cart-card__quantity">
-        qty: <input type="number" class="quantity-input" value="${item.quantity || 1}" data-index="${index}" min="1" />
-      </p>
-      <p class="cart-card__price">$${item.FinalPrice}</p>
-    </li>
-  `;
+function cartItemTemplate(item) {
+  const newItem = `<li class="cart-card divider">
+  <a href="#" class="cart-card__image">
+    <img
+      src="${item.Image}"
+      alt="${item.Name}"
+    />
+  </a>
+  <a href="#">
+    <h2 class="card__name">${item.Name}</h2>
+  </a>
+  <p class="cart-card__color">${item.Colors[0].ColorName}</p>
+  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__price">$${item.FinalPrice}</p>
+</li>`;
+
   return newItem;
 }
 
@@ -51,4 +51,35 @@ function updateCartItemQuantity(index, quantity) {
   }
 }
 
+function removeCartItem(index) {
+  const cartItems = getLocalStorage("so-cart");
+  cartItems.splice(index, 1);
+  setLocalStorage("so-cart", cartItems);
+  renderCartContents();
+}
+
+document.querySelector(".product-list").addEventListener("click", function (e) {
+  if (e.target && e.target.classList.contains("remove-item-btn")) {
+    const index = e.target.closest("li").getAttribute("data-index");
+    removeCartItem(index);
+  }
+});
+
+function getTotal(cartItems){
+  let total = 0;
+  cartItems.forEach(item => {
+    total += item.FinalPrice *(item.quantity || 1);
+  });
+  console.log(total);
+  // const cartTotal =  "<p>$${total.toFixed(2)}</p>"
+  document.querySelector(".cart-total").insertAdjacentHTML("afterbegin", totalTemplate(total));
+  return total;
+}
+
+function totalTemplate(total) {
+  return `<p>Total: $${total.toFixed(2)}</p>`
+}
+
+const cartItems = getLocalStorage("so-cart");
 renderCartContents();
+getTotal(cartItems);
