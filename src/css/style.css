@@ -91,6 +91,24 @@ button {
   font-size: var(--large-font);
   cursor: pointer;
 }
+.searchSection {
+  display: flex;
+  flex-direction: row;
+  justify-self: center;
+  align-items: center;
+}
+#searchButton {
+  display: flex;
+  scale: .6;
+  margin: 0;
+  align-items: flex-start;
+}
+#searchBar {
+  height: 2em;
+  width: 12em;
+  margin: 0;
+  border: 1px solid lightgray;
+}
 .divider {
   border-bottom: 2px solid var(--primary-color);
 }
