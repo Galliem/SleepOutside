@@ -42,3 +42,7 @@ export async function checkout(payload) {
   };
   return await fetch(baseURL + "checkout/", options).then(convertToJson);
 }
+
+export async function loginRequest(creds = { email: "user1@email.com" , password: "user1" }){
+  
+}

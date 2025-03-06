@@ -1,19 +1,16 @@
 import { renderHeaderFooter } from './utils.mjs';
 import { getParam } from './utils.mjs';
-
-//  Add an event listener to our login form's button, when the button is clicked:
-//  Get the username and password out of the form fields.
-//  Pass those to the login function along with the redirect information we gathered above.
+import { mount } from 'svelte';
+import LoginForm from './components/LoginForm.svelte';
 
 renderHeaderFooter();
+const redirect = getParam('redirect');
+console.log(redirect);
 
 mount(LoginForm,{
     target: document.querySelector('.loginForm'),
-    props: { key: "so-cart"},
+    props: { key: "so-token"},
 })
-
-const redirect = getParam('redirect');
-console.log(redirect)
 
 function getInfo(){
     const username = document.querySelector('#email').value;
