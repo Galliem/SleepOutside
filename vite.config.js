@@ -14,10 +14,9 @@ export default defineConfig({
         cart: resolve(__dirname, "src/cart/index.html"),
         checkout: resolve(__dirname, "src/checkout/index.html"),
         productList: resolve(__dirname, "src/product-list/product-index.html"),
-        products: resolve(
-          __dirname,
-          "src/product_pages/index.html"
-        ),
+        products: resolve(__dirname, "src/product_pages/index.html"),
+        login: resolve(__dirname, "src/login/index.html"),
+        order: resolve(__dirname, "src/order/index.html"),
       },
     },
   },
