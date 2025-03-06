@@ -220,12 +220,6 @@ button {
 .cart-card__quantity {
   grid-row: 1;
   grid-column: 3;
-  margin-left: auto; 
-  text-align: right;
-}
-
-.cart-card__quantity input {
-  width: 60px;
 }
 
 .cart-card__price {
