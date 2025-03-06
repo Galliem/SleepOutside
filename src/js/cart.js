@@ -8,6 +8,8 @@ function renderCartContents() {
   } else {
     document.querySelector(".product-list").innerHTML = "<p>Your cart is empty</p>";
   }
+
+  getTotal(cartItems);
 }
 
 function cartItemTemplate(item, index) {
@@ -23,7 +25,7 @@ function cartItemTemplate(item, index) {
       <p class="cart-card__quantity">
         qty: <input type="number" class="quantity-input" value="${item.quantity || 1}" data-index="${index}" min="1" />
       </p>
-      <p class="cart-card__price">$${item.FinalPrice}</p>
+      <p class="cart-card__price" data-price="${item.FinalPrice}">$${(item.FinalPrice * (item.quantity || 1)).toFixed(2)}</p>
       <button class="remove-item-btn">Remove</button>
     </li>
   `;
@@ -47,23 +49,14 @@ function updateCartItemQuantity(index, quantity) {
   if (cartItems && cartItems[index]) {
     cartItems[index].quantity = quantity;
 
+    const item = cartItems[index];
+    const priceElement = document.querySelector(`.cart-card[data-index='${index}'] .cart-card__price`);
+    priceElement.textContent = `$${(item.FinalPrice * quantity).toFixed(2)}`;
+
     setLocalStorage("so-cart", cartItems);
     renderCartContents();
   }
 }
-
-document.addEventListener('input', function(event) {
-  if (event.target && event.target.classList.contains('quantity-input')) {
-    const index = event.target.getAttribute('data-index');
-    const quantity = parseInt(event.target.value);
-
-    if (quantity > 0) {
-      updateCartItemQuantity(index, quantity);
-    }
-  }
-});
-
-
 
 document.querySelector(".product-list").addEventListener("click", function (e) {
   if (e.target && e.target.classList.contains("remove-item-btn")) {
@@ -75,18 +68,16 @@ document.querySelector(".product-list").addEventListener("click", function (e) {
 function getTotal(cartItems){
   let total = 0;
   cartItems.forEach(item => {
-    total += item.FinalPrice *(item.quantity || 1);
+    total += item.FinalPrice * (item.quantity || 1);
   });
   console.log(total);
-  // const cartTotal =  "<p>$${total.toFixed(2)}</p>"
-  document.querySelector(".cart-total").insertAdjacentHTML("afterbegin", totalTemplate(total));
+  document.querySelector(".cart-total").innerHTML = totalTemplate(total);
   return total;
 }
 
 function totalTemplate(total) {
-  return `<p>Total: $${total.toFixed(2)}</p>`
+  return `<p>Total: $${total.toFixed(2)}</p>`;
 }
 
 const cartItems = getLocalStorage("so-cart");
 renderCartContents();
-getTotal(cartItems);
