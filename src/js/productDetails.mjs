@@ -8,7 +8,7 @@ export async function productDetails(productId, selector) {
   product = await findProductById(productId);
   const el = document.querySelector(selector);
   el.insertAdjacentHTML("afterBegin", productDetailsTemplate(product));
-  document.getElementById("addToCart").addEventListener("click", addToCart(product));
+
   const addToCartButton = document.getElementById("addToCart");
   if (addToCartButton) {
     addToCartButton.addEventListener("click", () => {
