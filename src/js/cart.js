@@ -20,7 +20,6 @@ function cartItemTemplate(item, index) {
         <h2 class="card__name">${item.Name}</h2>
       </a>
       <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-      <p class="cart-card__quantity">qty: 1</p>
       <p class="cart-card__quantity">
         qty: <input type="number" class="quantity-input" value="${item.quantity || 1}" data-index="${index}" min="1" />
       </p>
