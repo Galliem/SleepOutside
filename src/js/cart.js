@@ -58,6 +58,13 @@ function updateCartItemQuantity(index, quantity) {
   }
 }
 
+function removeCartItem(index) {
+  const cartItems = getLocalStorage("so-cart");
+  cartItems.splice(index, 1);
+  setLocalStorage("so-cart", cartItems);
+  renderCartContents();
+}
+
 document.querySelector(".product-list").addEventListener("click", function (e) {
   if (e.target && e.target.classList.contains("remove-item-btn")) {
     const index = e.target.closest("li").getAttribute("data-index");
