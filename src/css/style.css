@@ -149,6 +149,8 @@ button {
 
 /* Styles for remove button */
 .remove-item-btn {
+  grid-row: 2;
+  grid-column: 5;
   font-size: 12px;
   margin-bottom: 15px;
 }
@@ -219,7 +221,7 @@ button {
 
 .cart-card__quantity {
   grid-row: 1;
-  grid-column: 3;
+  grid-column: 5;
 }
 
 .cart-card__price {
