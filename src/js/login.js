@@ -1,11 +1,10 @@
-import { renderHeaderFooter } from './utils.mjs';
-import { getParam } from './utils.mjs';
+import { login } from './auth.mjs';
+import { getParam, renderHeaderFooter } from './utils.mjs';
 import { mount } from 'svelte';
 import LoginForm from './components/LoginForm.svelte';
 
 renderHeaderFooter();
 const redirect = getParam('redirect');
-console.log(redirect);
 
 mount(LoginForm,{
     target: document.querySelector('.loginForm'),

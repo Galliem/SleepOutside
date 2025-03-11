@@ -9,12 +9,6 @@ async function convertToJson(res) {
   }
 }
 
-// export function getData(category = "tents") {
-//   return fetch(`../json/${category}.json`)
-//     .then(convertToJson)
-//     .then((data) => data);
-// }
-
 export async function getProductsByCategory(category) {
   const response = await fetch(baseURL + `products/search/${category}`);
   const data = await convertToJson(response);
@@ -32,6 +26,20 @@ export async function findProductById(id) {
   return product.Result;
 }
 
+export async function loginRequest(creds) {
+  const options = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(creds),
+  };
+  const response = await fetch(baseURL + "login", options).then(convertToJson);
+  return response.accessToken;
+}
+//  email: "user1@email.com" , password: "user1"
+
+
 export async function checkout(payload) {
   const options = {
     method: "POST",
@@ -43,6 +51,13 @@ export async function checkout(payload) {
   return await fetch(baseURL + "checkout/", options).then(convertToJson);
 }
 
-export async function loginRequest(creds = { email: "user1@email.com" , password: "user1" }){
-  
-}
+export async function getOrders(token) {
+  const options = {
+    method: "GET",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    }
+  }
+  const response = await fetch(baseURL + "orders", options).then(convertToJson);
+  return response;
+};

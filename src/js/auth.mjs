@@ -1,10 +1,10 @@
 import { loginRequest } from "./externalServices.mjs";
 import { alertMessage, getLocalStorage, setLocalStorage } from "./utils.mjs";
-import jwt_decode from "jwt-decode";
+import { jwt_decode } from "jwt-decode";
 
 const tokenKey = "so-token";
 
-function isTokenValid(token) {
+export function isTokenValid(token) {
   // check to make sure a token was actually passed in.
   if (token) {
     // decode the token
